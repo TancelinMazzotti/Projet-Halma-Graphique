@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <fstream>
+
 #define TAILLE_PLATEAU 10
 
 class DonneesPartie
@@ -21,6 +24,9 @@ public:
 	int char_to_int(char chiffre);	// Convertisseur char en int
 	char int_to_char(int chiffre);	// Convertisseur int en char
 	
+	int sauvegarde();
+	int charger();
+	void afficher();
 	~DonneesPartie();
 };
 
