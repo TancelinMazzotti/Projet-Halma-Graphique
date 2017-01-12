@@ -2,9 +2,11 @@
 
 Menu::Menu(sf::RenderWindow * window_cible, int width, int height)
 {
-	choix_menu = rien;
+	choix_menu = menu;
 	// Recuperation de la fenetre cible
 	window = window_cible;
+
+	menu_nouvelle_partie = new MenuNouvellePartie(window);
 
 	// Chargement des textures
 	texture_background_menu.loadFromFile("images/background_menu/background.jpg");
@@ -46,23 +48,54 @@ Menu::Menu(sf::RenderWindow * window_cible, int width, int height)
 
 }
 
-int Menu::afficher_ecran_menu()
+Choix Menu::afficher_ecran_menu()
 {
-	Evenement();
+	Choix choix_final;
 	// Affichage sur ecran
 	window->draw(background_menu);
 
 	window->draw(text_titre);
 
-	if (choix_menu == rien)
+	if (choix_menu == menu)
 	{
 		bouton_nouvelle_partie->draw();
 		bouton_charger_partie->draw();
 		bouton_regle_partie->draw();
 		bouton_quitter_partie->draw();
+		Evenement();
+		return choix_menu;
 	}
 
-	return 0;
+	else if(choix_menu == creer)
+	{
+		choix_final = menu_nouvelle_partie->afficher_ecran_menu();
+
+		if (choix_final == creer)
+		{
+			choix_menu = creer;
+			return choix_menu;
+		}
+
+		else if (choix_final == retour)
+		{
+			choix_menu = menu;
+			return menu;
+		}
+		else
+		{
+			choix_menu = menu;
+			return choix_final;
+		}
+		
+	}
+
+	else
+	{
+		choix_final = choix_menu;
+		choix_menu = menu;
+		return choix_final;
+	}
+
 }
 
 void Menu::Evenement()

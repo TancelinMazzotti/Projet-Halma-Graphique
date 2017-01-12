@@ -1,9 +1,8 @@
 #pragma once
 #include "Bouton.h"
+#include "Enumeration.h"
+#include "MenuNouvellePartie.h"
 #include <SFML/Graphics.hpp>
-
-enum Choix{rien,creer,charger,regle,retour,deuxjoueur,quatrejoueur};
-
 
 class Menu
 {
@@ -12,6 +11,8 @@ private:
 	Choix choix_menu;
 
 	sf::RenderWindow * window;
+
+	MenuNouvellePartie * menu_nouvelle_partie;
 
 	// Texture
 	sf::Texture texture_background_menu;
@@ -31,7 +32,7 @@ private:
 
 public:
 	Menu(sf::RenderWindow * window_cible,int width, int height);
-	int afficher_ecran_menu();
+	Choix afficher_ecran_menu();
 	void Evenement();
 	~Menu();
 };

@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <SFML/Graphics.hpp>
 
+#include "Enumeration.h"
 #include "Menu.h"
 
 class MainWindow
@@ -13,10 +14,11 @@ private:
 
 	Menu * menu_principal;
 
+	Choix position_navigation;
+
 public:
 	MainWindow();
 	void run();
-	void menu();
 	~MainWindow();
 };
 

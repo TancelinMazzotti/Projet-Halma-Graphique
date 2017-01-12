@@ -2,27 +2,32 @@
 
 MainWindow::MainWindow()
 {
-	largeur_window = 720; // 720
-	hauteur_window = 480; // 480
+	largeur_window = 720;
+	hauteur_window = 480;
 
 	window = new sf::RenderWindow(sf::VideoMode(largeur_window, hauteur_window), "Halma-Game - Graphic Mods");
 
 	menu_principal = new Menu(window, largeur_window, hauteur_window);
+
+	position_navigation = menu;
 }
 
 void MainWindow::run()
 {
 	while (window->isOpen())
 	{
-		/*sf::Event event;
-		while (window->pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window->close();
-		}*/
 		window->clear();
 
-		menu_principal->afficher_ecran_menu();
+		if(position_navigation == menu || (position_navigation == creer || position_navigation == regle))
+			position_navigation = menu_principal->afficher_ecran_menu();
+
+		else
+		{
+			// si 2 joueur ou 4 joueur -> creation
+			// si charger -> chargement
+
+			// Lancement du jeu
+		}
 
 		window->display();
 		Sleep(10);
