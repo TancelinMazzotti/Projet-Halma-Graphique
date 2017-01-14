@@ -7,12 +7,23 @@ MenuNouvellePartie::MenuNouvellePartie(sf::RenderWindow * main_window)
 	window = main_window;
 
 	choix_menu = creer;
+	texture_background_menu.loadFromFile("images/background_menu/background.jpg");
 
 	texture_cadre_bouton_on.loadFromFile("images/cadre_bouton/button_on.png");
 	texture_cadre_bouton_off.loadFromFile("images/cadre_bouton/button_off.png");
 	font.loadFromFile("police/nuku1.ttf");
 
+	background_menu.setTexture(texture_background_menu);
+	float facteur_x, facteur_y;
+	facteur_x = (float)window->getSize().x / (float)texture_background_menu.getSize().x;
+	facteur_y = (float)window->getSize().y / (float)texture_background_menu.getSize().y;
+	background_menu.setScale(facteur_x, facteur_y);
 
+	text_titre.setFont(font);
+	text_titre.setString("Halma  -  Game");
+	text_titre.setCharacterSize(96);
+
+	text_titre.setPosition(window->getSize().x / 2 - text_titre.getGlobalBounds().width / 2, 0);
 	bouton_2_joueur = new Bouton(window);
 	bouton_2_joueur->setTexture(texture_cadre_bouton_on, texture_cadre_bouton_off);
 	bouton_2_joueur->setFont(font);
@@ -42,6 +53,9 @@ MenuNouvellePartie::MenuNouvellePartie(sf::RenderWindow * main_window)
 Choix MenuNouvellePartie::afficher_ecran_menu()
 {
 	Choix choix_final;
+
+	window->draw(background_menu);
+	window->draw(text_titre);
 
 	bouton_2_joueur->draw();
 	bouton_4_joueur->draw();

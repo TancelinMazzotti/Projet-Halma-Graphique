@@ -2,15 +2,6 @@
 
 DonneesPartie::DonneesPartie()
 {
-	num_joueur = 0;
-	nombre_joueur = 0;
-	plateau[TAILLE_PLATEAU][TAILLE_PLATEAU] = { 0 };
-	classement[4] = {0};
-	coord_pion_selectionner[2] = { 0 };
-	coord_destination_pion[2] = { 0 };
-	resultat_deplacement = 0;
-	tableau_destination = NULL;
-	int taille_tableau_destination = 0;
 }
 
 int DonneesPartie::char_to_int(char chiffre)	// Convertisseur char en int
@@ -23,6 +14,19 @@ char DonneesPartie::int_to_char(int chiffre)	// Convertisseur int en char
 {
 	char converstion = chiffre + '0';
 	return converstion;
+}
+
+void DonneesPartie::reinitialiser()
+{
+	num_joueur = 0;
+	nombre_joueur = 0;
+	plateau[TAILLE_PLATEAU][TAILLE_PLATEAU] = { 0 };
+	classement[4] = { 0 };
+	coord_pion_selectionner[2] = { 0 };
+	coord_destination_pion[2] = { 0 };
+	resultat_deplacement = 0;
+	tableau_destination = NULL;
+	taille_tableau_destination = 0;
 }
 
 int DonneesPartie::sauvegarde()	// sauvegarde la partie

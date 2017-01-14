@@ -1,18 +1,17 @@
 #pragma once
-#include "Bouton.h"
-#include "Enumeration.h"
-#include "MenuNouvellePartie.h"
+
 #include <SFML/Graphics.hpp>
+
+#include "Enumeration.h"
+#include "Bouton.h"
+
 
 class Menu
 {
 private:
 
 	Choix choix_menu;
-
 	sf::RenderWindow * window;
-
-	MenuNouvellePartie * menu_nouvelle_partie;
 
 	// Texture
 	sf::Texture texture_background_menu;
@@ -31,7 +30,7 @@ private:
 	Bouton * bouton_quitter_partie;
 
 public:
-	Menu(sf::RenderWindow * window_cible,int width, int height);
+	Menu(sf::RenderWindow * window_cible);
 	Choix afficher_ecran_menu();
 	void Evenement();
 	~Menu();

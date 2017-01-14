@@ -1,21 +1,23 @@
 #include "Menu.h"
 
-Menu::Menu(sf::RenderWindow * window_cible, int width, int height)
+Menu::Menu(sf::RenderWindow * window_cible)
 {
 	choix_menu = menu;
 	// Recuperation de la fenetre cible
 	window = window_cible;
 
-	menu_nouvelle_partie = new MenuNouvellePartie(window);
-
 	// Chargement des textures
 	texture_background_menu.loadFromFile("images/background_menu/background.jpg");
-
 	texture_cadre_bouton_on.loadFromFile("images/cadre_bouton/button_on.png");
 	texture_cadre_bouton_off.loadFromFile("images/cadre_bouton/button_off.png");
 	font_menu.loadFromFile("police/nuku1.ttf");
 
 	background_menu.setTexture(texture_background_menu);
+	float facteur_x, facteur_y;
+	facteur_x = (float)window->getSize().x / (float)texture_background_menu.getSize().x;
+	facteur_y = (float)window->getSize().y / (float)texture_background_menu.getSize().y;
+	background_menu.setScale(facteur_x, facteur_y);
+	
 
 	text_titre.setFont(font_menu);
 	text_titre.setString("Halma  -  Game");
@@ -51,50 +53,20 @@ Menu::Menu(sf::RenderWindow * window_cible, int width, int height)
 Choix Menu::afficher_ecran_menu()
 {
 	Choix choix_final;
-	// Affichage sur ecran
-	window->draw(background_menu);
 
+	window->draw(background_menu);
 	window->draw(text_titre);
 
-	if (choix_menu == menu)
-	{
-		bouton_nouvelle_partie->draw();
-		bouton_charger_partie->draw();
-		bouton_regle_partie->draw();
-		bouton_quitter_partie->draw();
-		Evenement();
-		return choix_menu;
-	}
+	bouton_nouvelle_partie->draw();
+	bouton_charger_partie->draw();
+	bouton_regle_partie->draw();
+	bouton_quitter_partie->draw();
+	Evenement();
 
-	else if(choix_menu == creer)
-	{
-		choix_final = menu_nouvelle_partie->afficher_ecran_menu();
+	choix_final = choix_menu;
+	choix_menu = menu;
 
-		if (choix_final == creer)
-		{
-			choix_menu = creer;
-			return choix_menu;
-		}
-
-		else if (choix_final == retour)
-		{
-			choix_menu = menu;
-			return menu;
-		}
-		else
-		{
-			choix_menu = menu;
-			return choix_final;
-		}
-		
-	}
-
-	else
-	{
-		choix_final = choix_menu;
-		choix_menu = menu;
-		return choix_final;
-	}
+	return choix_final;
 
 }
 

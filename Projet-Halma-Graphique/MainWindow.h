@@ -1,10 +1,14 @@
 #pragma once
 #include <Windows.h>
+#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "DonneesPartie.h"
 #include "Enumeration.h"
+#include "DonneesPartie.h"
 #include "Menu.h"
+#include "MenuNouvellePartie.h"
+#include "FenetreJeu.h"
+
 
 class MainWindow
 {
@@ -15,6 +19,8 @@ private:
 	sf::RenderWindow * window;
 
 	Menu * menu_principal;
+	MenuNouvellePartie * menu_nouvelle_partie;
+	FenetreJeu * fenetre_jeu;
 
 	Choix position_navigation;
 

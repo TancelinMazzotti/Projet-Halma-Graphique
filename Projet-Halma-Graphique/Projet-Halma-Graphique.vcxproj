@@ -153,19 +153,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bouton.cpp" />
+    <ClCompile Include="CasePlateau.cpp" />
     <ClCompile Include="DonneesPartie.cpp" />
+    <ClCompile Include="FenetreJeu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuNouvellePartie.cpp" />
+    <ClCompile Include="Pion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bouton.h" />
+    <ClInclude Include="CasePlateau.h" />
     <ClInclude Include="DonneesPartie.h" />
     <ClInclude Include="Enumeration.h" />
+    <ClInclude Include="FenetreJeu.h" />
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuNouvellePartie.h" />
+    <ClInclude Include="Pion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

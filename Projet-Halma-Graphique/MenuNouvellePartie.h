@@ -1,8 +1,9 @@
 #pragma once
 
-#include "Bouton.h"
-#include "Enumeration.h"
+#include <SFML/Graphics.hpp>
 
+#include "Enumeration.h"
+#include "Bouton.h"
 
 
 class MenuNouvellePartie
@@ -12,10 +13,13 @@ private:
 
 	sf::RenderWindow * window;
 
+	sf::Texture texture_background_menu;
 	sf::Texture texture_cadre_bouton_on;
 	sf::Texture texture_cadre_bouton_off;
 	sf::Font font;
 
+	sf::Sprite background_menu;
+	sf::Text text_titre;
 	Bouton * bouton_2_joueur;
 	Bouton * bouton_4_joueur;
 	Bouton * bouton_retour;

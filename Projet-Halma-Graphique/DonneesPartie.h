@@ -24,6 +24,7 @@ public:
 	int char_to_int(char chiffre);	// Convertisseur char en int
 	char int_to_char(int chiffre);	// Convertisseur int en char
 	
+	void reinitialiser();
 	int sauvegarde();
 	int charger();
 	void afficher();
