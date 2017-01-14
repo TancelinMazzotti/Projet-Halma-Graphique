@@ -6,6 +6,9 @@ MenuNouvellePartie::MenuNouvellePartie(sf::RenderWindow * main_window)
 {
 	window = main_window;
 
+	buffer_sound.loadFromFile("son/gong.wav");
+	sound.setBuffer(buffer_sound);
+
 	choix_menu = creer;
 	texture_background_menu.loadFromFile("images/background_menu/background.jpg");
 
@@ -106,13 +109,22 @@ void MenuNouvellePartie::Evenement()
 		else if (event.type == sf::Event::MouseButtonPressed)
 		{
 			if (bouton_2_joueur->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
+			{
+				sound.play();
 				choix_menu = deuxjoueur;
+			}
 
 			else if (bouton_4_joueur->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
+			{
+				sound.play();
 				choix_menu = quatrejoueur;
+			}
 
 			else if (bouton_retour->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
+			{
+				sound.play();
 				choix_menu = retour;
+			}
 
 			else if (bouton_quitter->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
 				window->close();

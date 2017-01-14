@@ -6,6 +6,9 @@ Menu::Menu(sf::RenderWindow * window_cible)
 	// Recuperation de la fenetre cible
 	window = window_cible;
 
+	buffer_sound.loadFromFile("son/gong.wav");
+	sound.setBuffer(buffer_sound);
+
 	// Chargement des textures
 	texture_background_menu.loadFromFile("images/background_menu/background.jpg");
 	texture_cadre_bouton_on.loadFromFile("images/cadre_bouton/button_on.png");
@@ -52,6 +55,14 @@ Menu::Menu(sf::RenderWindow * window_cible)
 
 Choix Menu::afficher_ecran_menu()
 {
+	/*
+	sf::Texture matexture;
+	sf::Sprite monsprite;
+	matexture.loadFromFile("images/plateau/background_case.jpg");
+	monsprite.setTexture(matexture);
+	monsprite.setColor(sf::Color(0, 0, 255));
+	monsprite.setScale(0.3f, 0.3f);
+	*/
 	Choix choix_final;
 
 	window->draw(background_menu);
@@ -61,6 +72,7 @@ Choix Menu::afficher_ecran_menu()
 	bouton_charger_partie->draw();
 	bouton_regle_partie->draw();
 	bouton_quitter_partie->draw();
+	//window->draw(monsprite);
 	Evenement();
 
 	choix_final = choix_menu;
@@ -108,13 +120,23 @@ void Menu::Evenement()
 		else if (event.type == sf::Event::MouseButtonPressed)
 		{
 			if (bouton_nouvelle_partie->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
+			{
+				sound.play();
 				choix_menu = creer;
+			}
+				
 
 			else if (bouton_charger_partie->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
+			{
+				sound.play();
 				choix_menu = charger;
+			}
 
 			else if (bouton_regle_partie->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
+			{
+				sound.play();
 				choix_menu = regle;
+			}
 
 			else if (bouton_quitter_partie->estDansLeBouton(event.mouseButton.x, event.mouseButton.y))
 				window->close();

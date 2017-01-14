@@ -4,14 +4,14 @@
 
 #include "Enumeration.h"
 #include "DonneesPartie.h"
-#include "Bouton.h"
+#include "Plateau.h"
 
 
 class FenetreJeu
 {
 private:
 	sf::RenderWindow * window;
-	DonneesPartie * variable_partie;
+	Plateau * plateau_jeu;
 
 public:
 	FenetreJeu(sf::RenderWindow * window_cible);

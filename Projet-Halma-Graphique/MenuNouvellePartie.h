@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include "Enumeration.h"
 #include "Bouton.h"
@@ -12,6 +13,9 @@ private:
 	Choix choix_menu;
 
 	sf::RenderWindow * window;
+
+	sf::SoundBuffer buffer_sound;
+	sf::Sound sound;
 
 	sf::Texture texture_background_menu;
 	sf::Texture texture_cadre_bouton_on;

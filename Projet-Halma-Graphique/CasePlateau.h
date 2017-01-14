@@ -6,16 +6,18 @@
 class CasePlateau
 {
 private:
-	Pion pions_case;
+	Pion * pion_case;
 
-	sf::Texture * texture_case;
-	sf::Sprite  * sprite_case;
+	sf::Texture texture_case;
+	sf::Sprite sprite_case;
 
 	int position[2];
-	int taille;
 	int coordonnee[4];
+	
 
 public:
 	CasePlateau();
+	void setCamp(int num_camp);
+	void setPionCase(Pion * pion);
 	~CasePlateau();
 };
