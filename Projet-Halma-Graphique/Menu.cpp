@@ -55,14 +55,7 @@ Menu::Menu(sf::RenderWindow * window_cible)
 
 Choix Menu::afficher_ecran_menu()
 {
-	/*
-	sf::Texture matexture;
-	sf::Sprite monsprite;
-	matexture.loadFromFile("images/plateau/background_case.jpg");
-	monsprite.setTexture(matexture);
-	monsprite.setColor(sf::Color(0, 0, 255));
-	monsprite.setScale(0.3f, 0.3f);
-	*/
+
 	Choix choix_final;
 
 	window->draw(background_menu);
@@ -72,7 +65,6 @@ Choix Menu::afficher_ecran_menu()
 	bouton_charger_partie->draw();
 	bouton_regle_partie->draw();
 	bouton_quitter_partie->draw();
-	//window->draw(monsprite);
 	Evenement();
 
 	choix_final = choix_menu;

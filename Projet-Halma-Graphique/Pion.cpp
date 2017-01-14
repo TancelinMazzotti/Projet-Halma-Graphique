@@ -4,6 +4,8 @@
 
 Pion::Pion()
 {
+	texture_pion.loadFromFile("images/plateau/pion.png");
+	sprite_pion.setTexture(texture_pion);
 }
 
 void Pion::setCamp(int num_camp)
@@ -12,19 +14,19 @@ void Pion::setCamp(int num_camp)
 	{
 	case 1:
 		// camp J1 rouge
-		sprite_pion->setColor(sf::Color(255, 0, 0));
+		sprite_pion.setColor(sf::Color(255, 0, 0));
 		break;
 	case 2:
 		// camp J2 bleu
-		sprite_pion->setColor(sf::Color(0, 0, 255));
+		sprite_pion.setColor(sf::Color(0, 0, 255));
 		break;
 	case 3:
 		// camp J3 vert
-		sprite_pion->setColor(sf::Color(0, 255, 0));
+		sprite_pion.setColor(sf::Color(0, 255, 0));
 		break;
 	case 4:
 		// camp J4 jaune
-		sprite_pion->setColor(sf::Color(255, 255, 0));
+		sprite_pion.setColor(sf::Color(255, 255, 0));
 		break;
 	default:
 		break;

@@ -23,40 +23,41 @@ void MainWindow::run()
 	while (window->isOpen())
 	{
 		window->clear();
-
-		if(position_navigation == menu)
-			position_navigation = menu_principal->afficher_ecran_menu();
-
-		else if (position_navigation == creer)
+		switch (position_navigation)
 		{
+		case menu:
+			position_navigation = menu_principal->afficher_ecran_menu();
+			break;
+
+		case creer:
 			position_navigation = menu_nouvelle_partie->afficher_ecran_menu();
 			if (position_navigation == retour)
 				position_navigation = menu;
-		}
+			break;
 
-		else if (position_navigation == deuxjoueur)
-		{
+		case deuxjoueur:
+			position_navigation = partie_en_cours;
 			fenetre_jeu->nouvelle_partie(2);
-			position_navigation = partie_en_cours;
-		}
+			break;
 
-		else if (position_navigation == quatrejoueur)
-		{
+		case quatrejoueur:
+			position_navigation = partie_en_cours;
 			fenetre_jeu->nouvelle_partie(4);
+			break;
+
+		case charger:
 			position_navigation = partie_en_cours;
-		}
-			
-		else if (position_navigation = charger)
-		{
 			fenetre_jeu->charger_partie();
-			position_navigation = partie_en_cours;
-		}
+			break;
 
-		else if (position_navigation == partie_en_cours)
-		{
-			// Fenetre plateau + deroulement du jeu
-		}
+		case partie_en_cours:
+			fenetre_jeu->run();
+			break;
 
+		default:
+			break;
+		}
+		
 		Evenement();
 
 		window->display();

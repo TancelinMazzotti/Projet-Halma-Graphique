@@ -2,11 +2,30 @@
 
 
 
-CasePlateau::CasePlateau()
+CasePlateau::CasePlateau(sf::RenderWindow * window_cible)
 {
+	window = window_cible;
 	pion_case = NULL;
 	texture_case.loadFromFile("images/plateau/background_case.jpg");
 	sprite_case.setTexture(texture_case);
+	
+}
+
+void CasePlateau::redimentionne(int x, int y, int taille)
+{
+	coordonnee[0] = x + position[0] * taille;
+	coordonnee[1] = y + position[1] * taille;
+	sprite_case.setPosition(coordonnee[0], coordonnee[1]);
+	float facteur_x, facteur_y;
+	facteur_x = (float)taille / (float)texture_case.getSize().x;
+	facteur_y = (float)taille / (float)texture_case.getSize().y;
+	sprite_case.setScale(facteur_x, facteur_y);
+}
+
+void CasePlateau::setPosition(int x, int y)
+{
+	position[0] = x;
+	position[1] = y;
 }
 
 void CasePlateau::setCamp(int num_camp)
@@ -37,6 +56,11 @@ void CasePlateau::setCamp(int num_camp)
 void CasePlateau::setPionCase(Pion * pion)
 {
 	pion_case = pion;
+}
+
+void CasePlateau::draw()
+{
+	window->draw(sprite_case);
 }
 
 
